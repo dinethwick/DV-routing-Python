@@ -1,0 +1,92 @@
+Distance Table of router A at t=0:
+     B   C   D
+B   1   INF   INF
+C   INF   INF   INF
+D   INF   INF   1
+
+Distance Table of router B at t=0:
+     A   C   D
+A   1   INF   INF
+C   INF   1   INF
+D   INF   INF   INF
+
+Distance Table of router C at t=0:
+     A   B   D
+A   INF   INF   INF
+B   INF   1   INF
+D   INF   INF   1
+
+Distance Table of router D at t=0:
+     A   B   C
+A   1   INF   INF
+B   INF   INF   INF
+C   INF   INF   1
+
+Distance Table of router A at t=1:
+     B   C   D
+B   1   INF   INF
+C   2   INF   2
+D   INF   INF   1
+
+Distance Table of router B at t=1:
+     A   C   D
+A   1   INF   INF
+C   INF   1   INF
+D   2   2   INF
+
+Distance Table of router C at t=1:
+     A   B   D
+A   INF   2   2
+B   INF   1   INF
+D   INF   INF   1
+
+Distance Table of router D at t=1:
+     A   B   C
+A   1   INF   INF
+B   2   INF   2
+C   INF   INF   1
+
+Distance Table of router A at t=2:
+     B   C   D
+B   1   INF   3
+C   2   INF   2
+D   3   INF   1
+
+Distance Table of router B at t=2:
+     A   C   D
+A   1   3   INF
+C   3   1   INF
+D   2   2   INF
+
+Distance Table of router C at t=2:
+     A   B   D
+A   INF   2   2
+B   INF   1   3
+D   INF   3   1
+
+Distance Table of router D at t=2:
+     A   B   C
+A   1   INF   3
+B   2   INF   2
+C   3   INF   1
+
+Routing Table of router A:
+B,B,1
+C,B,2
+D,D,1
+
+Routing Table of router B:
+A,A,1
+C,C,1
+D,A,2
+
+Routing Table of router C:
+A,B,2
+B,B,1
+D,D,1
+
+Routing Table of router D:
+A,A,1
+B,A,2
+C,C,1
+

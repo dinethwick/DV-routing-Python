@@ -1,0 +1,42 @@
+The purpose of this text is to elaborate on my process of designing the final run_DV() function.
+
+The architecture for my second (current) implementation is in the architecture.png file.
+
+
+-- OLD IMPLEMENTATION: 
+In my first (previous) implementation, I had seperate functions for calculation and printing. 
+When I tested it, I realised it was fundamentally wrong.
+On an update, it always re-initialised everything and re-ran the entire algorithm from t=0. 
+So the t values and the distance tables after an update never matched the sample output.
+Since I had to create more data structures to pass to the print functions, this made it very confusing for myself to see where it was wrong.
+
+You can see the technical details behind the old implementation starting from commit 9ed1a53 upwards.
+
+
+-- SCRAPPING:
+Because of these reasons, I decided to scrap the old run_DV function and start again.
+I kept the parse_input() and build_adjacency() functions, and the data structures they create.
+
+The overall change was that I would print and calculate inside the same function.
+Also, I would add a main function to call and handle all of the other functions in the correct order. 
+
+
+-- NEW IMPLEMENTATION:
+please check architecture.png - this is what I drew when I designed the new implementation.
+
+to fix the issue of the algorithm re-initialising on an update, I made it so that:
+if is_update == True, the main() function calls run_DV() again
+with the previous distance vector and t value plugged in.
+This is more of an incremental approach.
+
+I also kept self costs at 0 without KeyErrors by special-casing v == y.
+
+heres an overview of this new run_DV function():
+    1. Initalise the distance vector table D_prev (if not proviced)
+    2. LOOP:
+        - for each router:
+            - print current distance table.
+            - compute the new best distances to all destinations through neighbours
+        - if no distance changed in the round -> convergance reached -> stop
+        - otherwise -> updatre D_prev and continue to next round.
+    3. After convergance, print final routing table for each router.

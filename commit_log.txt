@@ -1,0 +1,349 @@
+commit 3316ad126efee2bb3a2c098fe3b60267b6e2c6a7
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Mon Jun 9 19:13:21 2025 +0930
+
+    linked the architecture graph in the readme file
+
+commit 826d886e743852dc26f1a3820b115fb1ad6489ee
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Mon Jun 9 19:09:42 2025 +0930
+
+    added commit log. about to do the final submission. I read through the assignment instructions again and I think everything is good?
+    
+    I also removed the assignment instruction text files which I had for myself, and moved the sample input and output files there.
+
+commit d6bb298bdfc0858a119ae57864de4054174adc4a
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Mon Jun 9 18:43:24 2025 +0930
+
+    tested one more time with the sample output before submission. I think everything is ready for the final submission?
+
+commit 226ac36c0199391cc8d78070d7d71ad001902337
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Mon Jun 9 18:30:16 2025 +0930
+
+    I uploaded a graph explaining my code architecture is in architecture.png. I used this when I designed the new (current) implementation.
+    
+    I also wrote a rchitecture_explanation.txt to provide details,
+    and elaborate on why I scrapped my previous implementation of run_DV(),
+    and what I changed when doing the new (current) implementation.
+    
+    Becuase I am unsure if I included enough details about this in the old commit logs.
+
+commit ab12432f42da2ae03ff5c59e7c32895f26c89c64
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sun Jun 8 23:44:09 2025 +0930
+
+    cleaning up code; removed the print statements I used previously to test the data structures
+
+commit 522400b5a086147cb8449ffdb027c78e39f5e28b
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sun Jun 8 23:34:49 2025 +0930
+
+    removed stdout redirection to test with gradescope again
+
+commit c70aaac0fb67ea4f5de82c1ba6ab7a0a5cae0d9c
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sun Jun 8 22:20:46 2025 +0930
+
+    conducted test with 4 initial nodes with equal costs. I drew the toplogy on paper and it seems to be correct. I also organised the files, adding the test cases and instructions into seperate folders.
+
+commit 1f90364eddc327173c72cb75b59797492ce5cdd1
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 20:39:23 2025 +0930
+
+    testing a trivial case where there are only 2 nodes and no updates. it works
+
+commit a13d5b32020691958e721eedcf21f402010f23e8
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 20:29:19 2025 +0930
+
+    checked output; it looks correct.
+    indentation is not too good, but its clear, and the breif says itsok to have improper indentation as long as its readable
+
+commit e1fc8ff9097ae8614adf1c5aaab71f501d3467e9
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 20:20:23 2025 +0930
+
+    new test case added. same as sample, but without any updates. need to check if it works when theres no content within UPDATE and END.
+
+commit 1cf9ef41d6d909120deb041c663856eb6c9140ce
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 20:08:08 2025 +0930
+
+    Added better process explanation in run_DV function.
+    
+    Also, looking back, the main difference between my first DV implementation (which i wiped because it failed testing), and my second (current) implementation is that, on an update, the main function runs the run_DV again ON TOP OF the previous state.
+    
+    the first implementation just started the dv from scratch if there was an update. when I ran tests and read the instructions again, I realised this is fundamentally wrong. it would start form t=0 when an update it needed.
+    
+    in the current implementation, it plugs in the previous state and t value. and runs same function again.
+    
+    Also, changing run_dv to print and calculate at the same time made it so much easier for testing. It made the function quite long, but it still stays within the 80 line limit AND I dont have to check 3 seperate places when something is wrong.
+
+commit c20d8955049bdadf0b90254dc87161ee747422d6
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 19:34:51 2025 +0930
+
+    I read through the submissions and marking page again. need to improve code quality.
+    so I changed some variable names and added more comments for better clarity.
+    
+    I dont know if the comments under the run_DV header is enough to explain the process i took. Im going to take a look again and then write some new test cases afterwards
+
+commit 168690af2ef322b2e3325302574f4a6ffc623bbe
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 19:05:13 2025 +0930
+
+    gradescope returning output not found, probably because im writing the output to a specified txt file. changed that and about to try again
+
+commit c22df74ea8b77567595bbf6af01a55b56f383196
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 19:00:29 2025 +0930
+
+    re added shebang and removed file extension before testing on gradescope
+
+commit 8295fda22709f2f20675d27345045faab9983972
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 18:57:25 2025 +0930
+
+    testing new implementation. indentation is messed up, but the printing order and cost values match the sample output. I am going to try submitting to gradescope first.
+    
+    then i will test against cases with no updates and ones with majority updates instead of initial setup
+
+commit 10ebb1f1242a1497e187be5aed38a3206047d82f
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 18:51:06 2025 +0930
+
+    main function is complete. its just a driver function to call the others, and to re-run the dv if an update exists. heres the exact process:
+    
+    main driver function.
+    
+        process:
+        1. parse input using parse_input():
+            - routers
+            - initial links
+            - update links (if any)
+            - is_updated boolean
+        2. build initial adjacency dictionary.
+        3. run Distance Vector algorithm on initial topology (run_DV).
+        4. If an UPDATE section exists:
+            - add any new routers
+            - build updated adjacency dictionary
+            - run Distance Vector again, continuing from previous state.
+    
+        prints output to stdout / output2.txt
+
+commit c1fd058dde9be61fdebd0a628eaf224c2abe4f49
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 18:24:36 2025 +0930
+
+    implmented the planned run_DV based off of the new plan. need to complete main function and start testing. still cannot be sure of new implementation until tested
+
+commit be4ebf504dfc7dfcfdb2ca030ce68c9f67c774e1
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 17:09:46 2025 +0930
+
+    mapped out new implementation of run_DV. it will handle both the distance vector algo and print the tables at the same time.
+    
+    I have provided the full explanation inside the function. But to handle updates, main() will call run_DV() again with previous distance vector and t value.
+    
+    if the previous dv wasnt provided, that means it needs to initialise from scratch.
+
+commit fee7b3f9ff3e2c80a978f0339261877d5770bf40
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 16:41:47 2025 +0930
+
+    minor changes in parse input and run_DV before I start again. no logical changes, just went over it again and made code shorter and more clear for myself where possible
+    
+    Also added part of  the main function, still incomplete.
+
+commit 788311c5ec13d0b0c26c2ef5724cdd9fabb0a9cb
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 16:16:40 2025 +0930
+
+    wiped the previous dv logic and the print functions. I still have the data structures from the previous steps.
+    
+    i planned how to implement the logic for runnning the dv and print out the tables. I think having speerate functions to print the tables is complicating things. Im going to implement it so it print as it runs the algorithm.
+    
+    To accomodate this, I will create a main function to manage everything
+
+commit cb9d8c6242adc4dfc3aa961f88670217bb19a16e
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 15:10:07 2025 +0930
+
+    ok the parse input is fixed, and i tested it.
+    
+    i think im going to wipe the dv code and start again.
+
+commit c1737410a6ced50f16fd124141599e16b75c8aad
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Sat Jun 7 14:55:30 2025 +0930
+
+    I wrote the print distance tables function but when i tested everything, it doesnt work. getting a key error.
+    
+    My run_dv() logic is definetely wrong i think I have too many unnecessary data structures.
+    
+    im going to take a step back. im going to go back to the parse data function and change it to use sys.stdin.readline, so i dont have to worry about it and can run it the same way as it is in gradescope
+
+commit f3748017503e23105100d04b55d0aad5b8a384c9
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Fri Jun 6 23:59:41 2025 +0930
+
+    i quickly put down the logic for recomputation before tommorow. This is probably WRONG.
+    
+    I cant test it without the functions to print routing and distance tables.
+    
+    so for now, Im going to pause working on the DV algorithm,
+
+commit 7a04a428f0c59f1f1237b0cae293b8d75300d7df
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Fri Jun 6 23:33:11 2025 +0930
+
+    added code to recompute every routers distance table. used same logic as initial computation. need to logic to recompute dv next
+
+commit fc8b11de26b5d9d346e484a0995081c743c08495
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Fri Jun 6 22:51:48 2025 +0930
+
+    I wrote the code to initialise and populate the initial table and dv.
+    I printed them out and tested its output.
+    Although, I feel like there are too many data structures now and its getting confusing for myself.
+    But I will try to implement the loop in the psuedocode next, based on what I have.
+
+commit 934e574c2161c1458520aba2afe180e0942937ba
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Fri Jun 6 22:00:50 2025 +0930
+
+    I dont have a data structure that just defines the neighbours for a node. I added that in - i think it would make the upcoming implementation more simple. It might end of not being necessary though.
+
+commit 9ed1a53e60d530298a64535c2cb69523ebc14dc6
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Fri Jun 6 21:54:30 2025 +0930
+
+    I spent alot of time thinking of how the run_DV function can run the Distance Vector algorithm,
+    based on the data I have so far with the previous functions. I think I finally
+    have a good plan and start coding it. Heres what I think it needs to do:
+    
+        Must create two data structures:
+        1. table[x][v][y] = cost if x->v->y
+            if router x sends traffic first to neighbour v,
+            and then onward to y, what would the total cost be?
+    
+        2. distance vector
+            what is the current best known cost to reach y
+            from me (x), and which neighbour should I send it to?
+    
+        Input -> functionality
+        (list of routers, adjacency dictionary) ->
+            initialize distance tables at t=0
+            FROM T=0 UNTIL CONVERGENCE
+                run iterative updates and print each distance table
+            print final routing tables
+
+commit 62a150c55bf43efec8e349f933f832597db8e96e
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 23:28:06 2025 +0930
+
+    build_adjacency function should be complete. Now the program can get a dictionary of each
+    router, with its neighbours and costs. I also handled the cases where a new node may be added, and the case where cost == -1
+    where you drop the link.
+    
+    I tested and got the following:
+    {'X': {'Z': 9, 'Y': 3}, 'Y': {'X': 3, 'Z': 4}, 'Z': {'X': 9, 'Y': 4}}
+    
+    so its working. Now that I have the list of routers, list of link costs, list of updates,
+    and finally the dictionary above, I should be able to write something that calculates
+    the distance table for a router.
+
+commit d62742d4f1fdeae56298db49c097393eb674ceb2
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 22:00:42 2025 +0930
+
+    I noticed that calculating the via values is part of creating the distance table. To do that the program would need to know the neighbours and link cost of each router.
+    
+     so I am planning to write the build adjacency function to create a dict of key:dict pairs, like this-
+    
+     {router : {neighbour: link cost, neighbour: link cost,...},
+             router : {neighbour: link cost, neighbour: link cost,...}
+            ... }
+
+commit 6658b8db2cc00bf3f5974debacaf4ea4f1665035
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 21:21:21 2025 +0930
+
+    I kind ofunderstand that now I that I have the lists of routers and costs, I need to build something like a dictionary of routers and costs to a destination, considering the VIA node
+
+commit 600a3fcfb5da58b4b0f84a7c5338092c013fde36
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 21:10:15 2025 +0930
+
+    wrote the rest of the parse input func to complete all 3 lists. tested against the sample. it works.
+    
+    I also added a is_updated boolean that sets to true if the updated links list has data, so I can later decide if the links need to be updated or not in the algoithm.
+    
+    next i need to go through the instructions again and see how i can build the adjacency
+
+commit ee9a21f12c37b50f4b49651e2ce83026d819efc4
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 20:54:27 2025 +0930
+
+    there are three sections in the input file. I think I need three data structures - one for routers, one for the initial links, and one for the updated links.
+    
+    the routers could be in a list of str. the links i think need to be in a list of tuples.
+    
+    i defined them and next need to write the code to read the file and append to lists
+
+commit b1c6202aa3d5f845580992cc7fecfea71149aca9
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 20:37:10 2025 +0930
+
+    I am having trouble testing with stdin. I know the assignment says i have to read from standard input.
+    
+    so for now, just to build out the structure of parse_input(), im going to reaf from the sample input file.
+    
+    i wrote a block to add routers to a list, and tested it
+
+commit c953e10f9c7a070c4d91528ef42fd18859c6e52e
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Wed Jun 4 19:53:09 2025 +0930
+
+    I am back after reviewing the lectures and reading the instructions again.
+    I've looked at the input and output and I think I can map out the functions I need for this.
+    
+    I think i can map out the functionality into 4 four functions.
+    one to read input, one to build adjacency, one to run DV, and two more helper functions
+    to print the distance tables and routing tables.
+    
+    I've added these functions (just the names) to the python file,  I think i should just
+    see if i could map out the parse input function for now. I need to use either lists or
+    dict.
+
+commit 9762759e434f3980b95797c9a9c48e0116e662c4
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Tue Jun 3 21:08:23 2025 +0930
+
+    realised that you cant see console output on gradescope. deleted the library test file.
+    
+    did a google search but couldnt find anything, so im going to assume the python standard library is usable
+
+commit f2f44c9574e65a1b2804d3b94a3832969fc813af
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Tue Jun 3 20:57:29 2025 +0930
+
+    trying to find the installed libraries in gradescope. wrote a librarytest python script, which I am going to upload to gradescope and see if it prints the library names
+
+commit d4e1c8ebf82a024c4f1021e52cf764b38914d141
+Author: dinethwick <dinethwick23@gmail.com>
+Date:   Tue Jun 3 20:49:23 2025 +0930
+
+    starting project - initialised DistanceVector.py file.
+    
+    read through instructions. added the shebang and noted that i need to remove the .py extension when uploading.
+    
+    next, i need to review the DV lectures and figure our which libraries are allowed
+
+commit 097752891688aefb92e210d71a7f3b29e3364aef
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Tue Jun 3 10:50:10 2025 +0000
+
+    add online IDE url
