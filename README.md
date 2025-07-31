@@ -11,11 +11,11 @@ Given an input file of routers and link costs, along with optional updates, it:
 ![Architecture](architecture.png)
 
 ## Running the program
-A sample input and output, along with its topology, is in the [sample input and topology](sample input and topology) folder.
+A sample input and output, along with its topology, is in the "sample input and topology" folder.
 
 You can run the program in the terminal by using:
 ```bash
-python DistanceVector.py < testfilename.txt
+python DistanceVector.py < yourtestfilename.txt
 ```
 
 You can also specify the output file name at **line 10** of `DistanceVector.py`:
