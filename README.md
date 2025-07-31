@@ -10,7 +10,7 @@ Given an input file of routers and link costs, along with optional updates, it:
 ## Architecture:
 ![Architecture](architecture.png)
 
-## Running the program
+## Running the program:
 A sample input and output, along with its topology, is in the "sample input and topology" folder.
 
 You can run the program in the terminal by using:
